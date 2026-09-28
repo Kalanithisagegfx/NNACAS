@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {createRoot} from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from "react-router-dom";
 import "./styles.css";
@@ -426,6 +426,41 @@ function Layout({children}) {
   return <><Header/>{children}<Newsletter/><Footer/><WhatsApp/></>
 }
 
+function AnimatedProgress({label,delay=0}){
+  const itemRef=useRef(null);
+  const [value,setValue]=useState(0);
+  useEffect(()=>{
+    const item=itemRef.current;
+    if(!item) return;
+    let frame=0;
+    let timer=0;
+    let observer;
+    const animate=()=>{
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){setValue(100);return;}
+      const start=performance.now();
+      const duration=1100;
+      const tick=(now)=>{
+        const progress=Math.min((now-start)/duration,1);
+        setValue(Math.round(progress*100));
+        if(progress<1) frame=requestAnimationFrame(tick);
+      };
+      timer=window.setTimeout(()=>{frame=requestAnimationFrame(tick);},delay);
+    };
+    if(!("IntersectionObserver" in window)){animate();return;}
+    observer=new IntersectionObserver(([entry])=>{
+      if(!entry.isIntersecting) return;
+      animate();
+      observer.disconnect();
+    },{threshold:.35});
+    observer.observe(item);
+    return ()=>{observer?.disconnect();window.clearTimeout(timer);cancelAnimationFrame(frame);};
+  },[delay]);
+  return <div className="progress-item" ref={itemRef}>
+    <div><span>{label}</span><b aria-label={`${value} percent`}>{value}%</b></div>
+    <div className="progress-track"><i style={{width:`${value}%`}}/></div>
+  </div>;
+}
+
 function QuoteForm({company=false,compact=false}){
   const [done,setDone]=useState("");
   return <div className="quote-card">
@@ -649,7 +684,7 @@ function Home(){
       <div className="why-consult">
         <div className="why-photo-grid"><img loading="lazy" decoding="async" src="/image/income-tax-consultancy-service.webp" alt="Tax consultation"/><img loading="lazy" decoding="async" src="/image/woman-FINANCIAL -services.webp" alt="Financial advisory"/></div>
         <div className="why-copy"><h2>Personalized Tax Consultations</h2><p>Our tax experts provide personalized consultations to individuals seeking guidance on optimizing their tax liabilities, maximizing deductions and planning for future tax obligations.</p>
-          {["Tax Consultations", "Budget Management", "Analytic Finance"].map(x=><div className="progress-item" key={x}><div><span>{x}</span><b>100%</b></div><i/></div>)}
+          {["Tax Consultations", "Budget Management", "Analytic Finance"].map((x,index)=><AnimatedProgress label={x} delay={index*160} key={x}/>)}
         </div>
       </div>
     </section>

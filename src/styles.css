@@ -109,9 +109,10 @@ h4,h5{color:var(--green);letter-spacing:1.5px;margin:30px 0 5px}
 .why-copy h2{font-size:34px;margin:0 0 16px}
 .why-copy>p{font-size:15px;color:#777;line-height:1.7;margin-bottom:25px}
 .progress-item{margin:16px 0;font-size:13px;color:#666}
-.progress-item div{display:flex;justify-content:space-between;margin-bottom:4px}
+.progress-item>div:first-child{display:flex;justify-content:space-between;margin-bottom:4px}
 .progress-item b{color:var(--green);font-weight:500}
-.progress-item i{display:block;height:3px;background:var(--green)}
+.progress-track{height:3px;background:#e7eee9;overflow:hidden}
+.progress-item i{display:block;height:100%;background:var(--green)}
 .home-cta{background:linear-gradient(90deg,#124f5bbb,#084d68dd),url('/image/risk-services.webp') center/cover;color:white;padding:90px 0}
 .home-cta .container>div{max-width:700px;margin:0 auto}
 .home-cta h2{font-size:36px;color:white;margin:0 0 12px}
