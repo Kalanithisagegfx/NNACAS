@@ -543,7 +543,7 @@ const attestationItems = [
 
 function Home(){
   return <Layout>
-    <section className="home-hero" style={{backgroundImage:`url(${IMG.office})`}}>
+    <section className="home-hero" style={{backgroundImage:`url(${"/image/multiethnic-business-people-working-together-in-the-office-updraft-pre-smush-original.webp"})`}}>
       <div className="home-overlay"/>
       <div className="container home-copy">
         <h1>Welcome to Nandhini Narendra &amp; Associates, your Trusted tax consultant Partner in Chennai</h1>
@@ -825,7 +825,7 @@ function Contact(){
           <div className="contact-detail"><span>✉</span><p><b>Email us</b><br/>connect@nnacas.com</p></div>
           <div className="contact-detail"><span>♧</span><p><b>Call us</b><br/>+91 9551173873, +91 74188 14777</p></div>
         </div>
-        <img loading="lazy" decoding="async" className="contact-office-image" src={IMG.office} alt="Nandhini Narendra & Associates office"/>
+        <img loading="lazy" decoding="async" className="contact-office-image" src="/image/modern-glass-fronted-office-building-in-spring-updraft-pre-smush-original.webp" alt="Nandhini Narendra & Associates office"/>
       </section>
       <section className="contact-media" aria-label="Find our office"><div className="map-panel"><h2>Find our office</h2><div className="map-location-actions"><button type="button" onClick={()=>goToMapLocation("4/87 S Mada St, Tiruvottiyur, Chennai, Tamil Nadu 600019")}>Head Office</button><button type="button" onClick={()=>goToMapLocation("2.C Jai Durga flats, 60 Jawaharlal Nehru Road, Ashok Nagar, Chennai 600083")}>Branch Office</button></div><iframe id="contact-map" title="Map to Nandhini Narendra and Associates" src={`https://maps.google.com/maps?q=${encodeURIComponent(mapLocation)}&t=&z=15&ie=UTF8&iwloc=&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade"/></div></section>
       <section className="contact-social"><h2>Follow our social media</h2><div className="social"><a href="https://facebook.com/" aria-label="Facebook">f</a><a href="https://instagram.com/" aria-label="Instagram">◎</a><a href="https://twitter.com/" aria-label="Twitter">♥</a><a href="https://youtube.com/" aria-label="YouTube">▶</a></div></section>

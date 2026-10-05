@@ -772,10 +772,12 @@ a:focus-visible {
   .brand{flex:1;min-width:0}
   .brand-logo{width:clamp(100px,30vw,135px)}
   .consult{padding:10px 11px;font-size:9px;letter-spacing:.7px}
-  .home-copy{width:92%;padding:20px 0}
+  .home-hero{min-height:0;padding:48px 0 54px}
+  .home-copy{width:92%;padding:0}
   .home-copy h1{font-size:clamp(23px,7vw,32px)}
-  .home-copy p{overflow-wrap:anywhere}
-  .home-service-ribbon{margin-top:-80px}
+  .home-copy p{overflow-wrap:anywhere;margin-bottom:25px}
+  .home-copy .btn{display:inline-block;padding:13px 20px}
+  .home-service-ribbon{margin:0 0 24px}
   .footer-main{grid-template-columns:minmax(0,1fr);gap:22px;padding:35px 0}
   .footer-brand,.contact-col{grid-column:auto}
   .footer-main>div>a{font-size:13px}
