@@ -1,0 +1,10 @@
+Options -MultiViews
+RewriteEngine On
+
+# Serve existing files (including Vite assets, sitemap and robots) as-is.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# React Router handles application routes.
+RewriteRule ^ index.html [L]
